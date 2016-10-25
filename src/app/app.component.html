@@ -1,1 +1,3 @@
-<node *ngFor="let node of nodes | async" [node]="node"></node>
+<node-form (nodeAdded)="addNode($event)"></node-form>
+<br>
+<node *ngFor="let node of nodes" [node]="node"></node>
