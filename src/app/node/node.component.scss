@@ -1,6 +1,9 @@
+@keyframes strobe {
+  50% { background:red; color:black;  }
+}
 .node-wrap{
   .node{
-    min-height:8rem;
+    min-height:12rem;
     border:1px solid black;
     text-align:center;
     padding:1rem;
@@ -9,8 +12,13 @@
     color:white;
     text-transform:uppercase;
     position:relative;
+
     &.offline{
-      background-color:red;
+      background-color:black;
+      animation: strobe 500ms steps(1,end) infinite;
+      transition: flex .3s;
+      animation-play-state:running;
+      flex: 3;
     }
     &.online{
       background-color:green;
