@@ -1,0 +1,32 @@
+.node-wrap{
+  .node{
+    min-height:8rem;
+    border:1px solid black;
+    text-align:center;
+    padding:1rem;
+    margin-bottom:1rem;
+    margin-top:1rem;
+    color:white;
+    text-transform:uppercase;
+    position:relative;
+    &.offline{
+      background-color:red;
+    }
+    &.online{
+      background-color:green;
+    }
+    .node-text{
+      a{
+        color:white;
+      }
+      color:white;
+      width:100%;
+      font-weight:700;
+      position:absolute;
+      top:50%;
+      left:0;
+      transform:translateY(-50%);
+    }
+  }
+}
+

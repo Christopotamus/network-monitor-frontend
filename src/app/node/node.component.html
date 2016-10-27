@@ -1,1 +1,8 @@
-<a href="http://{{this.node.address}}">{{ node.name }}</a><br>
+<div class="node-wrap col-xs-6 col-md-3">
+  <div [class.online]="nodeOnline()" [class.offline]="nodeOffline()" class="node">
+    <div class="node-text">
+      <a href="http://{{this.node.address}}" >{{ node.name }}</a><br>
+      {{ node.address }}
+    </div>
+  </div>
+</div>

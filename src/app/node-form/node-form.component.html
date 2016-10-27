@@ -1,3 +1,12 @@
-<input type="text" class="form-control" id="address" required [(ngModel)]="this.node.address">
-<input type="text" class="form-control" id="name" required [(ngModel)]="this.node.name">
-<button type="button" (click)="submit()">Submit</button>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-4">
+      <input type="text" class="form-control" id="address" required [(ngModel)]="this.node.address">
+      <br>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="this.node.name">
+      <br>
+      <button type="button" class="btn btn-primary" (click)="submit()">Submit</button>
+      <br>
+    </div>
+  </div>
+</div>
