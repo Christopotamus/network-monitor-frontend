@@ -14,19 +14,20 @@ import * as io from 'socket.io-client';
 
 @Injectable()
 export class NodeService {
-
-  host: string = "http://localhost:3000";
+  production = true;
+  host: string = "http://netmon.mitecexchange.net";
+  //host: string = "http://localhost:3000";
   cachedNodes: Node[];
 
   private nodesSubject: BehaviorSubject<Node[]> = new BehaviorSubject<Node[]>(this.cachedNodes);
   
+
   socket = io(this.host);
 
   lastFetched = 0;
   private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) { 
-
     console.log("Initializing socket");
     new Observable(observer => {
       this.socket.on('node-created', (data) => {
