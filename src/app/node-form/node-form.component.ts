@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { NodeService } from '../node.service';
 import { Node } from '../node/node';
 
@@ -9,7 +9,6 @@ import { Node } from '../node/node';
 })
 export class NodeFormComponent implements OnInit {
   node: Node;
-  @Output() nodeAdded = new EventEmitter<Node>();
 
   constructor(private nodeService: NodeService) { 
     this.node = new Node();
@@ -17,10 +16,11 @@ export class NodeFormComponent implements OnInit {
     this.node.name="Name here";
 
   }
-
   ngOnInit() {
   }
   submit(){
-    this.nodeAdded.emit(this.node);
+    this.nodeService.addNode(this.node).subscribe((n) => {
+      console.log(n); 
+    });
   }
 }

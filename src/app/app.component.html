@@ -1,3 +1,7 @@
-<node-form (nodeAdded)="addNode($event)"></node-form>
+<nav>
+  <a routerLink="/" routerLinkActive="active">Monitor Nodes</a>
+  <a routerLink="/edit_nodes" routerLinkActive="active">Edit Nodes</a>
+</nav>
+<!-- <node-form (nodeAdded)="addNode($event)"></node-form> -->
 <br>
-<node *ngFor="let node of nodes" [node]="node"></node>
+<router-outlet></router-outlet>
