@@ -1,3 +1,10 @@
-<p>
-  node-list works!
-</p>
+<ul class="node-wrap">
+  <li *ngFor="let node of nodes" class="node" [class.online]="node.active" [class.offline]="!node.active">
+    <div class="row">
+      <div class="col-xs-12">
+        {{node.name}} - {{node.address}}
+        <button type="button" class="btn btn-default btn-danger" (click)="deleteNode(node)">Delete Node</button>
+      </div>
+    </div>
+  </li>
+</ul>

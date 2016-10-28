@@ -25,7 +25,6 @@ export class NodeMonitorComponent implements OnInit {
     
     this.subscription = this.nodeService.getNodes().subscribe( nodes => {
       this.nodes = nodes;
-      console.log("Return from sub", this.nodes);
     });
 
   }

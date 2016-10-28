@@ -1,0 +1,41 @@
+@keyframes strobe {
+  50% { color:red; }
+}
+.node-wrap{
+  padding-bottom:5rem;
+  list-style:none;
+  .node{
+    .btn{
+      float:right;
+    }
+    border-bottom:2px solid grey;
+    padding:1rem;
+    color:black;
+    text-transform:uppercase;
+    position:relative;
+
+    &.offline{
+      color:black;
+      animation: strobe 500ms steps(1,end) infinite;
+      transition: flex .3s;
+      animation-play-state:running;
+      flex: 3;
+    }
+    &.online{
+      color:green;
+    }
+    .node-text{
+      a{
+        color:white;
+      }
+      color:white;
+      width:100%;
+      font-weight:700;
+      position:absolute;
+      top:50%;
+      left:0;
+      transform:translateY(-50%);
+    }
+  }
+}
+

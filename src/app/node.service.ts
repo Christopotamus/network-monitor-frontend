@@ -34,11 +34,22 @@ export class NodeService {
       });
 
     }).subscribe((data) => {
-      console.log("Something happened!");
       //this.cachedNodes = ...data;
-      this.nodesSubject.next(this.cachedNodes);
       this.nodeCreated(data);
+      this.nodesSubject.next(this.cachedNodes);
     });
+  
+    new Observable(observer => {
+      this.socket.on('node-deleted', (data) => {
+        observer.next(data)
+      });
+
+    }).subscribe((data) => {
+      //this.cachedNodes = ...data;
+      this.nodeRemoved(data);
+      this.nodesSubject.next(this.cachedNodes);
+    });
+
 
   }
   addNode(node: Node): Observable<Node>{
@@ -48,19 +59,29 @@ export class NodeService {
   } 
   getNodes(): Observable<Node[]>{
     if(Date.now()/1000 > this.lastFetched + 5){
+      this.fetchNodes();
+    }
+    return this.nodesSubject.asObservable();
+  }
+  fetchNodes(){
+    console.log("fetching nodes");
       return this.http.get(this.host+'/api/nodes')
                       .map((r: Response) =>{
                         this.lastFetched = Date.now()/1000;
-                        this.cachedNodes = [...r.json() as Node[]]; 
-                        return this.cachedNodes;
-                        //return this.cachedNodes;
+                        return r.json() as Node[];
+                      }).subscribe((nodes) => {
+                        
+                        this.cachedNodes = [...nodes]; 
+                        console.log("Got some nodes back:", nodes, this.cachedNodes);
+                        this.nodesSubject.next(this.cachedNodes);
                       });
 
-    }else{
-      this.nodesSubject.next(this.cachedNodes);
-      return this.nodesSubject.asObservable();
-
-    }
+  }
+  removeNode(node): Observable<Node[]>{
+    return this.http.delete(this.host+'/api/nodes/'+ node.id)
+                    .map((res: Response) => {
+                      return res.json();      
+                    }).catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if
   }
   nodeCreated(data){
     let hasUpdated: boolean = false;
@@ -75,7 +96,10 @@ export class NodeService {
       //this.nodesSubject.next([...this.cachedNodes]);
     }
   }
- 
+  nodeRemoved(data){
+    let nodeCopy = Object.assign(this.cachedNodes, {} );
+    this.cachedNodes = nodeCopy.filter((n) => {return n.id.toString() != data.id.toString()});
+  }
   handleError(){
 
   }
