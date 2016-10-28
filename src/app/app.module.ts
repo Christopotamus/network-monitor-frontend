@@ -11,6 +11,7 @@ import { NodeMonitorComponent } from './node-monitor/node-monitor.component';
 
 import { AppRoutingModule } from './app.routing.module';
 import { NodeManagerComponent } from './node-manager/node-manager.component';
+import { NodeListComponent } from './node-manager/node-list/node-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NodeManagerComponent } from './node-manager/node-manager.component';
     NodeComponent,
     NodeFormComponent,
     NodeMonitorComponent,
-    NodeManagerComponent
+    NodeManagerComponent,
+    NodeListComponent
   ],
   imports: [
     BrowserModule,

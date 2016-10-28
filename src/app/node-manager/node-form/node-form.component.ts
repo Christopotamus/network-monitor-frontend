@@ -12,15 +12,15 @@ export class NodeFormComponent implements OnInit {
 
   constructor(private nodeService: NodeService) { 
     this.node = new Node();
-    this.node.address="Address here";
-    this.node.name="Name here";
+    this.node.address="";
+    this.node.name="";
 
   }
   ngOnInit() {
   }
   submit(){
     this.nodeService.addNode(this.node).subscribe((n) => {
-      console.log(n); 
+      this.node = new Node();  
     });
   }
 }

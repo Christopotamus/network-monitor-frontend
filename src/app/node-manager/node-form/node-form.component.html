@@ -1,13 +1,15 @@
-<h1>Add a Node</h1>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-4">
-      <input type="text" class="form-control" id="address" required [(ngModel)]="this.node.address">
-      <br>
-      <input type="text" class="form-control" id="name" required [(ngModel)]="this.node.name">
-      <br>
-      <button type="button" class="btn btn-primary" (click)="submit()">Submit</button>
-      <br>
+<div class="col-xs-12 col-md-4">
+  <h1>Add a Node</h1>
+  <form (ngSubmit)="submit()" #nodeForm="ngForm">
+    <div class="form-group">
+      <input type="text" class="form-control" id="address" required placeholder="Address" [(ngModel)]="this.node.address" name="address">
     </div>
-  </div>
+    <div class="form-group">
+      <input type="text" class="form-control" id="name" required placeholder="Name" [(ngModel)]="this.node.name" name="name">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" >Submit</button>
+    </div>
+  </form>
+  <br>
 </div>

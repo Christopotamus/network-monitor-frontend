@@ -1,3 +1,13 @@
-<node-form></node-form>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-8">
+      <node-form></node-form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <node *ngFor="let node of nodes" [node]="node"></node>
+    </div>
+  </div>
+</div>
 
-<node *ngFor="let node of nodes" [node]="node"></node>
