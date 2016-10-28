@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NodeComponent } from '../node/node.component';
-import { NodeFormComponent } from '../node-form/node-form.component';
 import { NodeService } from '../node.service';
 import {Observable} from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
@@ -12,11 +11,11 @@ import { Node }  from '../node/node';
 
 
 @Component({
-  selector: 'app-node-list',
-  templateUrl: './node-list.component.html',
-  styleUrls: ['./node-list.component.css']
+  selector: 'app-node-monitor',
+  templateUrl: './node-monitor.component.html',
+  styleUrls: ['./node-monitor.component.css']
 })
-export class NodeListComponent implements OnInit {
+export class NodeMonitorComponent implements OnInit {
   subscription: Subscription;
   nodes: Node[];
   subCount: number = 0;

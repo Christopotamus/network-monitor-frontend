@@ -1,6 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { NodeService } from '../node.service';
-import { Node } from '../node/node';
+import { NodeService } from '../../node.service';
+import { Node } from '../../node/node';
 
 @Component({
   selector: 'node-form',
